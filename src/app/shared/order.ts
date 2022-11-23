@@ -1,12 +1,12 @@
 import { OrderItem } from "./order-item";
 
 export class Order {
-    OrderID!: number | null;
-    OrderNo!: string;
-    CustomerID!: number;
-    PMethod!: string;
-    GTotal!: number;
-    DeleteOrderItemIDs!: string
+    orderID!: number | null;
+    orderNo!: string;
+    customerID!: number;
+    pMethod!: string;
+    gTotal!: number;
+    deleteOrderItemIDs!: string
 }
 
 

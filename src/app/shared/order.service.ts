@@ -18,21 +18,40 @@ export class OrderService {
    
   }
 
+
+
   saveOrUpdateOrder(){
 
-    console.log(this.OrderItem);
+
+
+    let Ordenes: any[] = [];
+
+    let myorder: any = {}
+
+    var result = this.OrderItem.map(item =>({
+       
+        orderItemID:  item.orderItemID,
+        OrderID: item.orderID,
+        Quantity:  item.quantity,
+        ItemID:  item.itemID
+
+      
+
+    }))
+
+     
+   
 
     var body = {
 
-     OrderID: this.formData.OrderID,
-     OrderNo: this.formData.OrderNo,
-     CustomerID: this.formData.CustomerID,
-     PMethod: this.formData.PMethod,
-     GTotal: this.formData.GTotal,
-     DeleteOrderItemIDs: this.formData.DeleteOrderItemIDs,
-     OrderItems: [{"OrderItemID": "0","OrderID":0, "ItemID":"1", "Quantity": 1 }]
-     /*  ...this.formData,
-      OrderItems: this.OrderItem */
+     OrderID: this.formData.orderID,
+     OrderNo: this.formData.orderNo,
+     CustomerID: this.formData.customerID,
+     PMethod: this.formData.pMethod,
+     GTotal: this.formData.gTotal,
+     DeleteOrderItemIDs: this.formData.deleteOrderItemIDs, 
+     OrderItems: result
+  
     };
 
     return this.http.post(environment.apiURL + '/Order', body);

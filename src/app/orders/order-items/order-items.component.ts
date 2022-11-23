@@ -33,17 +33,20 @@ export class OrderItemsComponent implements OnInit {
     this.itemService.getItemList().subscribe(res => {
      this.itemList = res
     })
+
     if(this.data.orderItemIndex == null){
+
       this.formData = {
-        OrderItemID: null,
-        OrderID: this.data.OrderID,
-        ItemID: 0,
-        ItemName: '',
-        Price: 0,
-        Quantity: 0,
-        Total: 0
+        orderItemID: 0,
+        orderID: this.data.orderID,
+        itemID: 0,
+        itemName: '',
+        price: 0,
+        quantity: 0,
+        total: 0
 
       } 
+
     } else {
       this.formData = Object.assign({}, this.orderService.OrderItem[this.data.orderItemIndex])
     } 
@@ -53,16 +56,16 @@ export class OrderItemsComponent implements OnInit {
 
    updatePrice(ctrl: any){
     if(ctrl.selectedIndex == 0){
-      this.formData.Price = 0;
-      this.formData.ItemName = '';
+      this.formData.price = 0;
+      this.formData.itemName = '';
     } else{
-      this.formData.Price = this.itemList[ctrl.selectedIndex - 1].price;
-      this.formData.ItemName = this.itemList[ctrl.selectedIndex -  1].name;
+      this.formData.price = this.itemList[ctrl.selectedIndex - 1].price;
+      this.formData.itemName = this.itemList[ctrl.selectedIndex -  1].name;
     }
     this.updateTotal();
   }
   updateTotal() {
-   this.formData.Total = parseFloat((this.formData.Quantity * this.formData.Price).toFixed(2));
+   this.formData.total = parseFloat((this.formData.quantity * this.formData.price).toFixed(2));
   }
 
   onSubmit(form: NgForm){
@@ -86,9 +89,9 @@ export class OrderItemsComponent implements OnInit {
   validateForm(formData: OrderItem) {
     this.isValid = true;
 
-    if(formData.ItemID == 0){
+    if(formData.itemID == 0){
       this.isValid = false
-    } else if(formData.Quantity == 0){
+    } else if(formData.quantity == 0){
       this.isValid = false
     }
     return this.isValid;
