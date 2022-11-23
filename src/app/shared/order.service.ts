@@ -69,7 +69,7 @@ export class OrderService {
 
   deleteOrder(id: number) {
 
-    return this.http.delete(environment.apiURL + '/Order/' + id);
+   return this.http.delete(environment.apiURL + `/Order/${id}`);
 
 
   }

@@ -36,7 +36,9 @@ export class OrdersComponent implements OnInit {
 
   onOrderDelete(id: number){
     if(confirm('Are you sure to delete this record?')){
-      this.service.deleteOrder(id).subscribe(() => {
+
+      this.service.deleteOrder(id).subscribe(res => {
+
         this.refreshList();
         this.toastr.warning("Delete Succesfully", "Restaurante App");
       })

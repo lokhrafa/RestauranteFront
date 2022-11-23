@@ -126,10 +126,11 @@ export class OrderComponent implements OnInit {
 
       this.service.saveOrUpdateOrder().subscribe(() => {
         this.resetForm();
-        this.toastr.success('Submitted Successfully', 'Restaurante App');
+       
         this.router.navigate(['/orders']);
-
+        this.toastr.success('Submitted Successfully', 'Restaurante App');
       })
+    
     }
   }
 
